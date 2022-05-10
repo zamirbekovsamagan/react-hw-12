@@ -61,7 +61,7 @@ const Login = (props) => {
             id="email"
             value={enteredEmail}  /* value бергенбиз себеби инпутка жазуу жазып аны submit  кылгандан кийин тазалап туруш учун*/
             onChange={emailChangeHandler} /*onchange аркылуу жазылган данныйларды алабыз */
-            onBlur={validateEmailHandler} /*качан инпуттан фокус алынганда бул функция иштейт, кобунчо onblur input проверкаларда колдонулат  */
+            onBlur={validateEmailHandler} /*качан инпуттан фокус алынганда бул функция иштейт, кобунчо onblur input проверкаларда колдонулат.  */
           />
         </div>
         <div className={`${classes.control} ${passwordIsValid === false ? classes.invalid : ''}`} /*бул жерде проверка коюлган эгерде password false болсо .invalid ке жазылган стиль иштейт */>
