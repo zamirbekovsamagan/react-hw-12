@@ -12,7 +12,11 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState(); // пароль туура же туура эмес экени текшерилет
   const [formIsValid, setFormIsValid] = useState(false); // общий форма т.е email жана парольду кошо текшерет
 
-  useEffect(() => {  //state озгоргон сайын rerender боло бербеш учун useEffect колдондук
+  useEffect(() => {  //useEffect бизге side effect тер менен иштоого мумкунчулук берет, мисалы fetch запрос, таймерлер менен.
+    // ал эки аргумент алат: функция жана dependencies.
+    // кандай иштейт 1) useEffect(() => {ар рендер болгон сайын иштейт, себеби эч кандай зависимости жок})
+    // 2) useEffect(() => { башындале бир жолу иштейт}, []);
+    // 3) useEffect(() => { башында бир жолу иштейт жана dependencyнин мааниси алмашкан сайын иштейт}, [dependency]);
     const timer = setTimeout(() => {
       setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
       console.log('changed');
@@ -57,7 +61,7 @@ const Login = (props) => {
             id="email"
             value={enteredEmail}  /* value бергенбиз себеби инпутка жазуу жазып аны submit  кылгандан кийин тазалап туруш учун*/
             onChange={emailChangeHandler} /*onchange аркылуу жазылган данныйларды алабыз */
-            onBlur={validateEmailHandler} /*качан инпуттан фокус алынганда бул функция иштейт */
+            onBlur={validateEmailHandler} /*качан инпуттан фокус алынганда бул функция иштейт, кобунчо onblur input проверкаларда колдонулат  */
           />
         </div>
         <div className={`${classes.control} ${passwordIsValid === false ? classes.invalid : ''}`} /*бул жерде проверка коюлган эгерде password false болсо .invalid ке жазылган стиль иштейт */>
